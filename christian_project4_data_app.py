@@ -108,12 +108,10 @@ elif st.session_state.action_status == "google_clicked":
 # === display according to the choices
 
 if st.session_state.current_choice == "1. Scrape data":
-    
     st.header("1. Web Scraping results :")
     
     if st.session_state.action_status == "scraping_complete" and st.session_state.scraped_df is not None:
         df = st.session_state.scraped_df
-        #st.success(f"✅ Scraping ended with success **{st.session_state.selected_url_key}**.")
         st.subheader(f"Resultats ({len(df)} lines)")
         st.dataframe(df.head(50)) # displat=ying only 50 rows
         
@@ -132,7 +130,6 @@ if st.session_state.current_choice == "1. Scrape data":
 # ---
 
 elif st.session_state.current_choice == "2. Download data already scraped":
-    
     st.header("2. Download data :")
     
     if st.session_state.download_key:
@@ -173,19 +170,17 @@ elif st.session_state.current_choice == "2. Download data already scraped":
 elif st.session_state.current_choice == "3. View a dashboard of data":
     
     st.header("3. Tableau de Bord et Statistiques")
-    st.warning("This section will be implemented at a later date.")
-    st.info("Here, you will display graphs, statistical summaries (mean, median, distribution), and KPIs based on CSV data.")
+    #st.warning("This section will be implemented at a later date.")
+    #st.info("Here, you will display graphs, statistical summaries (mean, median, distribution), and KPIs based on CSV data.")
     
     # Exemple de statistiques futures:
     # df_chiens = load_data_from_csv(DATA_PATHS['1 Chiens'])
-    # if not df_chiens.empty:
-    #     st.subheader("Statistiques sur les Chiens")
-    #     st.write(df_chiens.describe())
-    #     st.bar_chart(df_chiens['prix_col']) # Exemple
+    if not df_chiens.empty:
+         st.subheader("Statistiques sur les Chiens")
+         st.write(df_chiens.describe())
+         st.bar_chart(df_chiens['prix_col']) # Exemple
 
 # ---
-
 elif st.session_state.current_choice == "4. Fill in an app evaluation":
-    
     st.header("4. Application evaluation")
     st.info("Links to the KoboCollect and Google Form forms are available in the sidebar..")
